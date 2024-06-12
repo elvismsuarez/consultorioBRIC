@@ -1,5 +1,7 @@
+from django.contrib import admin
 from django.urls import path
 from . import views
+
 
 urlpatterns = [
 
@@ -13,7 +15,9 @@ path('user-logout', views.user_logout, name="user-logout"),
 
 # CRUD
 
-path('dasboard', views.dashboard, name="dashboard"),
+path('dashboard', views.dashboard, name="dashboard"),
+
+path('dashboardJSON/', views.dashboardJSON, name='dashboardJSON'),
 
 path('create-record', views.create_record, name="create-record"),
 

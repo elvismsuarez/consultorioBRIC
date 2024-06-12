@@ -1,0 +1,78 @@
+<script>
+
+let dataTable;
+let dataTableIsInitialized=false;
+
+const dataTableOptions = {
+    columnDefs: [
+        { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6] },
+        { orderable: false, targets: [5, 6] },
+        { searchable: false, targets: [0, 5, 6] }
+    ],
+    pageLength: 15,
+    destroy: true
+};
+
+const initDataTable=async() =>{
+if(dataTableIsInitialized){
+    dataTable.destroy();
+}
+
+await listDashboard();
+
+dataTable = $('#datatable-records').DataTable({dataTableOptions})
+
+dataTableIsInitialized = true;
+};
+
+const listDashboard = async () => {
+    try {
+        const response = await fetch("{% url 'dashboardJSON' %}");
+        const data = await response.json();
+        let content=``;
+        data.records.forEach((record, index) => {
+        content +=`
+        <tr>
+            <td>${index+1}</td>
+            <td>${record.first_name}</td>
+            <td>${record.last_name}</td>
+            <td>${record.email}</td>
+            <td>${record.phone}</td>
+            <td>${record.address}</td>
+            <td>${record.city}</td>
+            <td>${record.province}</td>
+            <td>${record.country}</td>
+            <td>${record.country}</td>
+
+
+        </tr>`; 
+        });
+        //tableBody_programmers.innerHTML = content;
+
+    } catch (ex) {
+        alert(ex);
+    }
+};
+
+window.addEventListener("load", async () => {
+    await initDataTable();
+});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

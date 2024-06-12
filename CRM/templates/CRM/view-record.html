@@ -6,11 +6,11 @@
     <strong>
 
             &nbsp; &nbsp;
-
+          <p class="text-center">   
         {{record.last_name|upper}}
 
         {{record.first_name}} 
-
+    </p> 
 
     </strong>
 
@@ -19,6 +19,11 @@
 
 
     <div class="card-body">
+        
+
+        <div class="row align-items-start">
+            <div class="col">
+              <strong> <p class="text-center"> Primera Columna </p> </strong>            
         <p> <strong> ID: </strong>  {{record.id}} </p>
 
         <p> <strong> Email: </strong> {{record.email}} </p> 
@@ -35,14 +40,36 @@
 
         <p> <strong> Creation Date: </strong> {{record.creation_date}} </p> 
 
+    </div>
+        
+    <div class="col">
+        <strong> <p class="text-center"> Primera Columna </p> </strong>  
+        <p> <strong> Name: </strong>  {{record.first_name}} </p>
 
+        <p> <strong> Last Name: </strong> {{record.last_name}} </p> 
+
+        <p> <strong> 2nd Last Name: </strong>  {{record.last_name_2}} </p>
+
+        <p> <strong> Cedula: </strong>  {{record.cedula}} </p>
+
+        <p> <strong> Birthday: </strong>  {{record.fecha_nacimiento}} </p>
+        
+        <p> <strong> Sex: </strong> {{record.sexo}} </p>
+        
+        <p> <strong> Father Name: </strong> {{record.nombre_padre}} </p> 
+
+        <p> <strong> Mother Name: </strong> {{record.nombre_madre}} </p> 
+
+    </div>
     </div>
 
 
 
-</div>    
+</div>  
+</div>  
 
 <br>
+<div class="centered">
 
 <a href="{% url 'dashboard' %}" class="btn btn-sucundary">Return</a>
 
@@ -54,6 +81,7 @@
 
 <a href="{% url 'delete-record' record.id %}" class="btn btn-danger">Delete</a> 
 
+</div>
 &nbsp;
 
 {% endblock %}

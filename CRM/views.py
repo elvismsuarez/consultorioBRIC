@@ -10,6 +10,8 @@ from . models import Record
 
 from django.contrib import messages
 
+from django.http.response import JsonResponse
+
 # - Homepage
 
 def home(request):
@@ -87,6 +89,16 @@ def dashboard(request):
 
     return render(request, 'CRM/dashboard.html', context=context)
 
+
+# - For Data Table
+
+def dashboardJSON(request):
+
+    my_records = list(Record.objects.values())
+
+    data={'records': my_records} 
+
+    return JsonResponse(data)
 
 # - Create a record
 
